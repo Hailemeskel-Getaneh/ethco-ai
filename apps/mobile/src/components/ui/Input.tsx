@@ -40,6 +40,7 @@ export const Input = ({
                 style={[
                     styles.input,
                     error ? styles.inputError : null,
+                    props.editable === false ? styles.inputDisabled : null,
                     style,
                 ]}
                 placeholderTextColor={colors.textMuted}
@@ -81,6 +82,11 @@ const styles = StyleSheet.create({
         borderColor: colors.error,
         backgroundColor: colors.errorBackground,
         borderWidth: 1,
+    },
+    inputDisabled: {
+        backgroundColor: colors.surfaceHighlight,
+        color: colors.textMuted,
+        opacity: 0.6,
     },
     errorText: {
         color: colors.error,
