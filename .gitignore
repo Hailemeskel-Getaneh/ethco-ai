@@ -1,0 +1,29 @@
+# Dependencies
+node_modules
+.pnpm-store
+
+# Build Outputs
+dist/
+build/
+.next/
+.expo/
+web-build/
+
+# Configs
+.env
+.env.local
+.DS_Store
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AI Models (Safety Check)
+*.pt
+*.pth
+*.bin
+*.ckpt
+*.gguf
+*.safetensors
+xprompts/
