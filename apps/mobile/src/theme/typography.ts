@@ -2,6 +2,7 @@ export const typography = {
     fontFamily: {
         regular: 'System',
         medium: 'System',
+        semibold: 'System',
         bold: 'System',
         // In the future, we can map to custom fonts like:
         // regular: 'Inter-Regular',
