@@ -11,7 +11,6 @@ export * from './Input';
 export * from './Loading';
 export * from './Screen';
 export * from './ThemedText';
-export * from './Typography';
 export * from './Card';
 export * from './Badge';
 export * from './Divider';
