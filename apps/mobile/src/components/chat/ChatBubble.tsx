@@ -1,6 +1,6 @@
 import React from 'react';
 import { View, StyleSheet } from 'react-native';
-import { ThemedText } from '@/components/ui/Typography';
+import { ThemedText } from '@/components/ui';
 import { colors } from '@/theme/colors';
 import { Message } from '@/services/mockAI';
 

@@ -2,7 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { View, FlatList, StyleSheet, KeyboardAvoidingView, Platform, TouchableOpacity } from 'react-native';
 import { useLocalSearchParams, useRouter } from 'expo-router';
 import { Screen } from '@/components/ui/Screen';
-import { ThemedText } from '@/components/ui/Typography';
+import { ThemedText } from '@/components/ui';
 import { ChatBubble } from '@/components/chat/ChatBubble';
 import { ChatInput } from '@/components/chat/ChatInput';
 import { sendMessageMock, Message } from '@/services/mockAI';

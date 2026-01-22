@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { View, ActivityIndicator } from 'react-native';
 import { useRouter } from 'expo-router';
 import { colors } from '@/theme/colors';
-import { ThemedText } from '@/components/ui/Typography';
+import { ThemedText } from '@/components/ui';
 
 export default function SplashScreen() {
     const router = useRouter();
