@@ -1,4 +1,4 @@
-# Ethco AI Platform
+# Ethco AI 
 
 The central monorepo for the Ethco AI ecosystem, featuring a brand-first mobile experience and proprietary multi-model intelligence.
 
