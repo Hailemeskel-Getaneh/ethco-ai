@@ -10,6 +10,15 @@ interface AvatarProps {
     online?: boolean;
 }
 
+/**
+ * Avatar component for displaying user profile images or initials.
+ * 
+ * @param {AvatarProps} props - The props for the component.
+ * @param {ImageSourcePropType | string} [props.source] - Image source (URL or local).
+ * @param {string} [props.initials] - Initials to display when no image is provided.
+ * @param {number} [props.size=40] - Size of the avatar in pixels.
+ * @param {boolean} [props.online] - Whether to show online status badge.
+ */
 export const Avatar = ({
     source,
     initials,
