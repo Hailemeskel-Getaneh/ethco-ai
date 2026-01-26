@@ -10,6 +10,15 @@ interface ThemedTextProps extends TextProps {
     centered?: boolean;
 }
 
+/**
+ * ThemedText component for typography with theme-aware styling.
+ * 
+ * @param {ThemedTextProps} props - The props for the component.
+ * @param {'h1' | 'h2' | 'h3' | 'body' | 'caption' | 'label'} [props.variant='body'] - Typography variant.
+ * @param {string} [props.color] - Text color override.
+ * @param {'regular' | 'medium' | 'bold'} [props.weight] - Font weight.
+ * @param {boolean} [props.centered] - Whether to center the text.
+ */
 export function ThemedText({
     style,
     variant = 'body',
