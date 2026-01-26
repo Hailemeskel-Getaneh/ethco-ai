@@ -10,6 +10,15 @@ interface ScreenProps {
     backgroundColor?: string;
 }
 
+/**
+ * Screen component for wrapping screen content with safe area and status bar.
+ * 
+ * @param {ScreenProps} props - The props for the component.
+ * @param {React.ReactNode} props.children - Child components.
+ * @param {boolean} [props.safeArea=true] - Whether to use SafeAreaView.
+ * @param {StatusBarStyle} [props.statusBarStyle='light-content'] - Status bar style.
+ * @param {string} [props.backgroundColor=colors.background] - Background color.
+ */
 export const Screen = ({
     children,
     style,
