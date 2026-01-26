@@ -11,6 +11,15 @@ interface LoadingProps {
     fullscreen?: boolean;
 }
 
+/**
+ * Loading component for displaying loading indicators.
+ * 
+ * @param {LoadingProps} props - The props for the component.
+ * @param {'small' | 'large'} [props.size='small'] - Size of the loading indicator.
+ * @param {string} [props.color=colors.primary] - Color of the loading indicator.
+ * @param {string} [props.text] - Optional loading text.
+ * @param {boolean} [props.fullscreen=false] - Whether to display fullscreen.
+ */
 export const Loading = ({
     size = 'small',
     color = colors.primary,
