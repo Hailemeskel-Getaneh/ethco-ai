@@ -15,6 +15,16 @@ interface EmptyStateProps {
     style?: StyleProp<ViewStyle>;
 }
 
+/**
+ * EmptyState component for displaying empty or no-data states.
+ * 
+ * @param {EmptyStateProps} props - The props for the component.
+ * @param {keyof typeof Ionicons.glyphMap} [props.icon='file-tray-outline'] - Icon to display.
+ * @param {string} props.title - Title text.
+ * @param {string} [props.description] - Optional description text.
+ * @param {string} [props.actionLabel] - Optional action button label.
+ * @param {() => void} [props.onAction] - Optional action button handler.
+ */
 export const EmptyState = ({
     icon = 'file-tray-outline',
     title,
