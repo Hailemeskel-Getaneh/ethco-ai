@@ -39,7 +39,7 @@ export const Button = ({
     let textColor = colors.text;
     if (disabled) {
         textColor = colors.textMuted;
-    } else if (variant === 'primary' && !isOutline && !isGhost) {
+    } else if (variant === 'primary') {
         textColor = colors.textInverse; // Black text on bronze button
     } else if (variant === 'ghost') {
         textColor = colors.textSecondary;
