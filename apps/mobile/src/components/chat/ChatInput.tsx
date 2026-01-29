@@ -1,87 +1,101 @@
 import React, { useState } from 'react';
-import { View, TextInput, TouchableOpacity, StyleSheet, ActivityIndicator } from 'react-native';
+import { View, TextInput, StyleSheet, TouchableOpacity, Platform } from 'react-native';
 import { colors } from '@/theme/colors';
 import { typography } from '@/theme/typography';
-import { ThemedText } from '@/components/ui/Typography';
-
-// Note: In a real app we would use an Icon library like Ionicons
-// For now we use text symbols or simple views
+import { Icon } from '../ui/Icons';
+import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 interface ChatInputProps {
-    onSend: (text: string) => void;
-    disabled?: boolean;
+    onSend: (message: string) => void;
+    isLoading?: boolean;
 }
 
-export function ChatInput({ onSend, disabled }: ChatInputProps) {
+export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
     const [text, setText] = useState('');
+    const insets = useSafeAreaInsets();
 
     const handleSend = () => {
-        if (text.trim() && !disabled) {
+        if (text.trim()) {
             onSend(text.trim());
             setText('');
         }
     };
 
     return (
-        <View style={styles.container}>
-            <TextInput
-                style={styles.input}
-                value={text}
-                onChangeText={setText}
-                placeholder="Message..."
-                placeholderTextColor={colors.textSecondary}
-                multiline
-                maxLength={500}
-                editable={!disabled}
-            />
+        <View style={[styles.container, { paddingBottom: Math.max(insets.bottom, 20) }]}>
+            <TouchableOpacity style={styles.attachButton}>
+                <Icon name="add" size={24} color={colors.primary} />
+            </TouchableOpacity>
+
+            <View style={styles.inputContainer}>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Message Ethco AI..."
+                    placeholderTextColor={colors.textMuted}
+                    value={text}
+                    onChangeText={setText}
+                    multiline
+                    maxLength={1000}
+                />
+            </View>
+
             <TouchableOpacity
-                style={[styles.sendButton, (!text.trim() || disabled) && styles.disabledButton]}
+                style={[styles.sendButton, !text.trim() && styles.disabledSend]}
                 onPress={handleSend}
-                disabled={!text.trim() || disabled}
+                disabled={!text.trim() || isLoading}
             >
-                {disabled ? (
-                    <ActivityIndicator size="small" color={colors.background} />
-                ) : (
-                    <View style={{ width: 20, height: 20, backgroundColor: colors.text, borderRadius: 10 }} />
-                    // Placeholder for Send Icon (Arrow Up)
-                )}
+                <Icon
+                    name="send"
+                    size={20}
+                    color={text.trim() ? colors.textInverse : colors.textMuted}
+                />
             </TouchableOpacity>
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
         flexDirection: 'row',
         alignItems: 'flex-end',
-        padding: 12,
+        paddingHorizontal: 16,
+        paddingTop: 12,
         backgroundColor: colors.surface,
         borderTopWidth: 1,
         borderTopColor: colors.border,
     },
-    input: {
+    attachButton: {
+        padding: 10,
+        marginBottom: 6,
+    },
+    inputContainer: {
         flex: 1,
-        minHeight: 40,
-        maxHeight: 100,
-        backgroundColor: colors.background,
-        borderRadius: 20,
+        minHeight: 44,
+        maxHeight: 120,
+        backgroundColor: colors.inputBackground, // Ensure this exists in colors or fallback
+        borderRadius: 22,
+        marginHorizontal: 8,
         paddingHorizontal: 16,
-        paddingTop: 10,
-        paddingBottom: 10,
+        paddingVertical: 8,
+        marginBottom: 8,
+    },
+    input: {
         color: colors.text,
         fontSize: typography.sizes.md,
-        marginRight: 10,
+        paddingTop: 0,
+        // Android multiline input alignment fix
+        textAlignVertical: 'center',
     },
     sendButton: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
+        width: 44,
+        height: 44,
+        borderRadius: 22,
         backgroundColor: colors.primary,
         justifyContent: 'center',
         alignItems: 'center',
+        marginBottom: 8,
     },
-    disabledButton: {
+    disabledSend: {
         backgroundColor: colors.surfaceHighlight,
-        opacity: 0.5,
     },
 });
