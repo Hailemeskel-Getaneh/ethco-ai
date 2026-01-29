@@ -1,40 +1,51 @@
 import React from 'react';
-import { TextInput, View, StyleSheet, TextInputProps } from 'react-native';
+import { View, TextInput, StyleSheet, TextInputProps, ViewStyle, StyleProp } from 'react-native';
+import { ThemedText } from './ThemedText';
 import { colors } from '@/theme/colors';
 import { typography } from '@/theme/typography';
-import { ThemedText } from './Typography';
 
 interface InputProps extends TextInputProps {
     label?: string;
     error?: string;
+    helperText?: string;
+    containerStyle?: StyleProp<ViewStyle>;
 }
 
-export function Input({ label, error, style, ...rest }: InputProps) {
+export const Input = ({
+    label,
+    error,
+    helperText,
+    containerStyle,
+    style,
+    ...props
+}: InputProps) => {
     return (
-        <View style={styles.container}>
+        <View style={[styles.container, containerStyle]}>
             {label && (
-                <ThemedText variant="label" color={colors.textSecondary} style={styles.label}>
+                <ThemedText variant="caption" style={styles.label}>
                     {label}
                 </ThemedText>
             )}
+
             <TextInput
                 style={[
                     styles.input,
                     error ? styles.inputError : null,
                     style,
                 ]}
-                placeholderTextColor={colors.textSecondary}
+                placeholderTextColor={colors.textMuted}
                 selectionColor={colors.primary}
-                {...rest}
+                {...props}
             />
-            {error && (
-                <ThemedText variant="caption" color={colors.error} style={styles.error}>
-                    {error}
-                </ThemedText>
-            )}
+
+            {error ? (
+                <ThemedText style={styles.errorText}>{error}</ThemedText>
+            ) : helperText ? (
+                <ThemedText style={styles.helperText}>{helperText}</ThemedText>
+            ) : null}
         </View>
     );
-}
+};
 
 const styles = StyleSheet.create({
     container: {
@@ -42,21 +53,34 @@ const styles = StyleSheet.create({
     },
     label: {
         marginBottom: 8,
+        color: colors.textSecondary,
+        textTransform: 'uppercase',
+        letterSpacing: 1,
+        fontSize: 11,
     },
     input: {
-        height: 50,
-        backgroundColor: colors.surface,
-        borderRadius: 8,
+        backgroundColor: colors.inputBackground || colors.surface,
+        borderRadius: 12,
         paddingHorizontal: 16,
+        paddingVertical: 14,
         color: colors.text,
         fontSize: typography.sizes.md,
         borderWidth: 1,
-        borderColor: colors.border,
+        borderColor: 'transparent',
     },
     inputError: {
         borderColor: colors.error,
+        backgroundColor: colors.errorBackground,
+        borderWidth: 1,
     },
-    error: {
+    errorText: {
+        color: colors.error,
+        fontSize: 12,
+        marginTop: 4,
+    },
+    helperText: {
+        color: colors.textSecondary,
+        fontSize: 12,
         marginTop: 4,
     },
 });
