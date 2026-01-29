@@ -1,74 +1,101 @@
 import React from 'react';
-import { TouchableOpacity, Text, StyleSheet, ActivityIndicator, ViewStyle, TextStyle } from 'react-native';
+import { StyleSheet, TouchableOpacity, ActivityIndicator, TouchableOpacityProps } from 'react-native';
+import { ThemedText } from './ThemedText';
 import { colors } from '@/theme/colors';
-import { typography } from '@/theme/typography';
 
-interface ButtonProps {
-    title: string;
-    onPress: () => void;
+interface ButtonProps extends TouchableOpacityProps {
+    children: React.ReactNode;
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
+    size?: 'sm' | 'md' | 'lg';
     loading?: boolean;
-    style?: ViewStyle;
 }
 
-export function Button({ title, onPress, variant = 'primary', loading = false, style }: ButtonProps) {
-    const getBackgroundColor = () => {
-        switch (variant) {
-            case 'primary': return colors.primary;
-            case 'secondary': return colors.surfaceHighlight;
-            case 'outline': return 'transparent';
-            case 'ghost': return 'transparent';
-            default: return colors.primary;
+export const Button = ({
+    children,
+    variant = 'primary',
+    size = 'md',
+    loading = false,
+    style,
+    disabled,
+    ...props
+}: ButtonProps) => {
+    const isOutline = variant === 'outline';
+
+    // Determine background color
+    let backgroundColor = 'transparent';
+    if (!isOutline && variant !== 'ghost') {
+        if (disabled) {
+            backgroundColor = colors.surfaceHighlight;
+        } else if (variant === 'primary') {
+            backgroundColor = colors.primary;
+        } else if (variant === 'secondary') {
+            backgroundColor = colors.surfaceHighlight;
         }
-    };
+    }
 
-    const getBorderColor = () => {
-        if (variant === 'outline') return colors.primary;
-        return 'transparent';
-    };
+    const borderColor = isOutline ? (disabled ? colors.border : colors.borderHighlight) : 'transparent';
 
-    const getTextColor = () => {
-        if (variant === 'outline' || variant === 'ghost') return colors.primary;
-        if (variant === 'secondary') return colors.text;
-        return '#FFFFFF'; // Primary usually has white text
-    };
+    // Determine text color
+    let textColor = colors.text;
+    if (disabled) {
+        textColor = colors.textMuted;
+    } else if (variant === 'primary' && !isOutline && !isGhost) {
+        textColor = colors.textInverse; // Black text on bronze button
+    } else if (variant === 'ghost') {
+        textColor = colors.textSecondary;
+    } else if (variant === 'outline') {
+        textColor = colors.text;
+    }
 
     return (
         <TouchableOpacity
             style={[
-                styles.container,
-                {
-                    backgroundColor: getBackgroundColor(),
-                    borderColor: getBorderColor(),
-                    borderWidth: variant === 'outline' ? 1 : 0,
-                },
+                styles.button,
+                { backgroundColor, borderColor },
+                isOutline && styles.outline,
+                styles[size],
                 style,
             ]}
-            onPress={onPress}
-            disabled={loading}
-            activeOpacity={0.8}
+            disabled={disabled || loading}
+            activeOpacity={0.7}
+            {...props}
         >
             {loading ? (
-                <ActivityIndicator color={getTextColor()} />
+                <ActivityIndicator color={textColor} />
             ) : (
-                <Text style={[styles.text, { color: getTextColor() }]}>{title}</Text>
+                typeof children === 'string' ? (
+                    <ThemedText
+                        variant="defaultSemiBold"
+                        style={{ color: textColor }}
+                    >
+                        {children}
+                    </ThemedText>
+                ) : children
             )}
         </TouchableOpacity>
     );
-}
+};
 
 const styles = StyleSheet.create({
-    container: {
-        height: 48,
-        borderRadius: 8,
-        justifyContent: 'center',
-        alignItems: 'center',
-        paddingHorizontal: 16,
+    button: {
         flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'center',
+        borderRadius: 12,
     },
-    text: {
-        fontSize: typography.sizes.md,
-        fontWeight: '600',
-        letterSpacing: 0.5,
+    outline: {
+        borderWidth: 1,
+    },
+    sm: {
+        paddingVertical: 8,
+        paddingHorizontal: 12,
+    },
+    md: {
+        paddingVertical: 12,
+        paddingHorizontal: 16,
+    },
+    lg: {
+        paddingVertical: 16,
+        paddingHorizontal: 24,
     },
 });
