@@ -15,6 +15,7 @@ The central monorepo for the Ethco AI ecosystem, featuring a brand-first mobile 
 
 ## 🚀 Getting Started
 
+
 ### Prerequisites
 - Node.js (v18+)
 - Python (v3.10+)
