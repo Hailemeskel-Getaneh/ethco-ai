@@ -1,3 +1,7 @@
+/**
+ * Application color palette variables.
+ * Used for consistent styling across the app.
+ */
 export const colors = {
     // Core
     background: '#0F0F0F', // Deep rich black
