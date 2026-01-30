@@ -1,5 +1,6 @@
 import { Stack } from 'expo-router';
 import { colors } from '@/theme/colors';
+import { typography } from '@/theme/typography';
 
 export default function AppLayout() {
     return (
@@ -8,7 +9,14 @@ export default function AppLayout() {
                 headerStyle: { backgroundColor: colors.background },
                 headerTintColor: colors.text,
                 contentStyle: { backgroundColor: colors.background },
-                headerTitleStyle: { fontWeight: 'bold' },
+                headerTitleStyle: {
+                    fontFamily: typography.fontFamily.bold,
+                    fontSize: typography.sizes.lg,
+                    fontWeight: typography.weights.bold as any,
+                },
+                headerBackTitleStyle: {
+                    fontFamily: typography.fontFamily.regular,
+                },
                 headerShadowVisible: false, // Clean look
             }}
         >
@@ -17,6 +25,11 @@ export default function AppLayout() {
                 options={{
                     title: 'Conversations',
                     headerLargeTitle: true,
+                    headerLargeTitleStyle: {
+                        color: colors.text,
+                        fontFamily: typography.fontFamily.bold,
+                        fontWeight: typography.weights.bold as any,
+                    }
                 }}
             />
             <Stack.Screen
