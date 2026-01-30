@@ -11,6 +11,15 @@ interface InputProps extends TextInputProps {
     containerStyle?: StyleProp<ViewStyle>;
 }
 
+/**
+ * Input component for user text entry.
+ * 
+ * @param {InputProps} props - The props for the component.
+ * @param {string} [props.label] - Optional label to display above the input.
+ * @param {string} [props.error] - Error message to display below the input.
+ * @param {string} [props.helperText] - Helper text to display below the input.
+ * @param {StyleProp<ViewStyle>} [props.containerStyle] - Style for the container view.
+ */
 export const Input = ({
     label,
     error,
