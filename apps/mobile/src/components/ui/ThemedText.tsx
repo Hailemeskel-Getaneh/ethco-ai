@@ -8,6 +8,14 @@ export type ThemedTextProps = TextProps & {
     fontSize?: number;
 };
 
+/**
+ * ThemedText component that renders text with theme-aware styles.
+ * 
+ * @param {ThemedTextProps} props - The props for the component.
+ * @param {string} [props.variant='default'] - The typography variant to use.
+ * @param {string} [props.color] - Optional color override.
+ * @param {number} [props.fontSize] - Optional font size override.
+ */
 export function ThemedText({
     style,
     variant = 'default',
