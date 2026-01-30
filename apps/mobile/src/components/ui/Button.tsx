@@ -3,6 +3,15 @@ import { StyleSheet, TouchableOpacity, ActivityIndicator, TouchableOpacityProps 
 import { ThemedText } from './ThemedText';
 import { colors } from '@/theme/colors';
 
+/**
+ * Button component for user actions.
+ * 
+ * @param {ButtonProps} props - The props for the component.
+ * @param {React.ReactNode} props.children - The content of the button.
+ * @param {string} [props.variant='primary'] - The visual style of the button.
+ * @param {string} [props.size='md'] - The size of the button.
+ * @param {boolean} [props.loading=false] - Whether the button is in a loading state.
+ */
 interface ButtonProps extends TouchableOpacityProps {
     children: React.ReactNode;
     variant?: 'primary' | 'secondary' | 'outline' | 'ghost';
@@ -20,10 +29,11 @@ export const Button = ({
     ...props
 }: ButtonProps) => {
     const isOutline = variant === 'outline';
+    const isGhost = variant === 'ghost';
 
     // Determine background color
     let backgroundColor = 'transparent';
-    if (!isOutline && variant !== 'ghost') {
+    if (!isOutline && !isGhost) {
         if (disabled) {
             backgroundColor = colors.surfaceHighlight;
         } else if (variant === 'primary') {
@@ -41,9 +51,9 @@ export const Button = ({
         textColor = colors.textMuted;
     } else if (variant === 'primary') {
         textColor = colors.textInverse; // Black text on bronze button
-    } else if (variant === 'ghost') {
+    } else if (isGhost) {
         textColor = colors.textSecondary;
-    } else if (variant === 'outline') {
+    } else if (isOutline) {
         textColor = colors.text;
     }
 
