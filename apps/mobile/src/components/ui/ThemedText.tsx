@@ -3,7 +3,7 @@ import { colors } from '@/theme/colors';
 import { typography } from '@/theme/typography';
 
 export type ThemedTextProps = TextProps & {
-    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption';
+    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label';
     color?: string;
     fontSize?: number;
 };
@@ -32,6 +32,7 @@ export function ThemedText({
                 variant === 'subtitle' && styles.subtitle,
                 variant === 'link' && styles.link,
                 variant === 'caption' && styles.caption,
+                variant === 'label' && styles.label,
                 color ? { color } : undefined,
                 fontSize ? { fontSize } : undefined,
                 style,
@@ -77,5 +78,11 @@ const styles = StyleSheet.create({
         fontSize: typography.sizes.xs,
         color: colors.textSecondary,
         lineHeight: typography.lineHeights.xs,
+    },
+    label: {
+        fontSize: typography.sizes.sm,
+        fontWeight: typography.weights.bold as any,
+        fontFamily: typography.fontFamily.bold,
+        color: colors.text,
     },
 });
