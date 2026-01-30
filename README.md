@@ -26,7 +26,10 @@ The central monorepo for the Ethco AI ecosystem, featuring a brand-first mobile 
 cd apps/mobile
 npm install
 npm run android # or npm run ios
+npm run android # or npm run ios
 ```
+
+See [apps/mobile/README.md](apps/mobile/README.md) for more mobile-specific documentation.
 
 ## 🔐 Architecture
 This project follows a strict **Monorepo** architecture:
