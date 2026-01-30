@@ -6,3 +6,6 @@ This directory will contain the Next.js web application.
 - Next.js (React)
 - Tailwind CSS
 - Server-Sent Events (SSE) for streaming
+
+## Status
+🚧 Planning Phase
