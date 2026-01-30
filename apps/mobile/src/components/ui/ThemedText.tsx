@@ -24,8 +24,8 @@ export function ThemedText({
                 variant === 'subtitle' && styles.subtitle,
                 variant === 'link' && styles.link,
                 variant === 'caption' && styles.caption,
-                color && { color },
-                fontSize && { fontSize },
+                color ? { color } : undefined,
+                fontSize ? { fontSize } : undefined,
                 style,
             ]}
             {...rest}
