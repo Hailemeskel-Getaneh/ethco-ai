@@ -56,7 +56,7 @@ const styles = StyleSheet.create({
         color: colors.textSecondary,
         textTransform: 'uppercase',
         letterSpacing: 1,
-        fontSize: 11,
+        fontSize: typography.sizes.xs,
     },
     input: {
         backgroundColor: colors.inputBackground || colors.surface,
@@ -75,12 +75,12 @@ const styles = StyleSheet.create({
     },
     errorText: {
         color: colors.error,
-        fontSize: 12,
+        fontSize: typography.sizes.xs,
         marginTop: 4,
     },
     helperText: {
         color: colors.textSecondary,
-        fontSize: 12,
+        fontSize: typography.sizes.xs,
         marginTop: 4,
     },
 });
