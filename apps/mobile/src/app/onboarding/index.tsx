@@ -27,7 +27,7 @@ export default function OnboardingScreen() {
             </View>
 
             <View style={styles.footer}>
-                <Button title="Get Started" onPress={() => router.push('/auth/login')} />
+                <Button onPress={() => router.push('/auth/login')}>Get Started</Button>
             </View>
         </Screen>
     );

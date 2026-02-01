@@ -50,11 +50,12 @@ export default function LoginScreen() {
                 />
 
                 <Button
-                    title="Sign In"
                     onPress={handleLogin}
                     loading={loading}
                     style={styles.button}
-                />
+                >
+                    Sign In
+                </Button>
 
                 <View style={styles.footerLink}>
                     <ThemedText variant="body" color={colors.textSecondary}>Don't have an account? </ThemedText>
