@@ -37,11 +37,6 @@ export default function ConversationListScreen() {
         router.push(`/chat/${id}`);
     };
 
-    const handleNewChat = () => {
-        const newId = Date.now().toString();
-        router.push(`/chat/${newId}`);
-    };
-
     return (
         <Screen style={styles.container} safeArea={false} noPadding>
             <FlatList
@@ -53,14 +48,10 @@ export default function ConversationListScreen() {
                 contentContainerStyle={styles.listContent}
                 ListEmptyComponent={
                     <View style={styles.emptyState}>
-                        <ThemedText color={colors.textSecondary}>No conversations yet.</ThemedText>
+                        <ThemedText color={colors.textSecondary}>No conversations yet. Open the menu to start a new chat.</ThemedText>
                     </View>
                 }
             />
-
-            <TouchableOpacity style={styles.fab} onPress={handleNewChat}>
-                <ThemedText variant="h2" color="#FFF">+</ThemedText>
-            </TouchableOpacity>
         </Screen>
     );
 }
@@ -104,20 +95,4 @@ const styles = StyleSheet.create({
         padding: spacing.xl * 2,
         alignItems: 'center',
     },
-    fab: {
-        position: 'absolute',
-        bottom: spacing.xl,
-        right: spacing.xl,
-        width: 56,
-        height: 56,
-        borderRadius: 28,
-        backgroundColor: colors.primary,
-        justifyContent: 'center',
-        alignItems: 'center',
-        shadowColor: "#000",
-        shadowOffset: { width: 0, height: 4 },
-        shadowOpacity: 0.3,
-        shadowRadius: 4.65,
-        elevation: 8,
-    }
 });
