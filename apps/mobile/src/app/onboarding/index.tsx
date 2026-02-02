@@ -5,6 +5,7 @@ import { Screen } from '@/components/ui/Screen';
 import { ThemedText } from '@/components/ui';
 import { Button } from '@/components/ui/Button';
 import { colors } from '@/theme/colors';
+import { spacing } from '@/theme/spacing';
 
 export default function OnboardingScreen() {
     const router = useRouter();
@@ -27,7 +28,7 @@ export default function OnboardingScreen() {
             </View>
 
             <View style={styles.footer}>
-                <Button onPress={() => router.push('/auth/login')}>Get Started</Button>
+                <Button onPress={() => router.push('/login')}>Get Started</Button>
             </View>
         </Screen>
     );
@@ -43,11 +44,11 @@ const styles = StyleSheet.create({
         alignItems: 'center',
     },
     textContainer: {
-        marginBottom: 40,
-        paddingHorizontal: 20,
+        marginBottom: spacing.xl * 2,
+        paddingHorizontal: spacing.lg,
     },
     title: {
-        marginBottom: 16,
+        marginBottom: spacing.md,
     },
     subtitle: {
         maxWidth: 280,
@@ -60,7 +61,8 @@ const styles = StyleSheet.create({
         opacity: 0.5,
     },
     footer: {
-        paddingVertical: 20,
-        gap: 12,
+        paddingVertical: spacing.lg,
+        paddingHorizontal: spacing.lg,
+        gap: spacing.md,
     },
 });
