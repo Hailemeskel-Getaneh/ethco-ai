@@ -47,6 +47,14 @@ export default function RootLayout() {
                     name="conversations"
                     options={({ navigation }) => ({
                         title: 'Ethco AI',
+                        headerLeft: () => (
+                            <TouchableOpacity
+                                onPress={() => navigation.toggleDrawer()}
+                                style={{ marginLeft: 16 }}
+                            >
+                                <Icon name="menu" size={28} color={colors.text} />
+                            </TouchableOpacity>
+                        ),
                         headerRight: () => (
                             <TouchableOpacity
                                 onPress={() => (navigation as any).navigate('settings')}
@@ -61,6 +69,14 @@ export default function RootLayout() {
                     name="chat/[id]"
                     options={({ navigation }) => ({
                         title: 'Chat',
+                        headerLeft: () => (
+                            <TouchableOpacity
+                                onPress={() => navigation.toggleDrawer()}
+                                style={{ marginLeft: 16 }}
+                            >
+                                <Icon name="menu" size={28} color={colors.text} />
+                            </TouchableOpacity>
+                        ),
                         headerRight: () => (
                             <TouchableOpacity
                                 onPress={() => (navigation as any).navigate('settings')}
