@@ -12,12 +12,26 @@ web-build/
 # Configs
 .env
 .env.local
+.env.*.local
 .DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
 
 # Logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+*.log
+
+# Testing
+coverage/
+.nyc_output/
 
 # AI Models (Safety Check)
 *.pt
@@ -26,4 +40,4 @@ yarn-error.log*
 *.ckpt
 *.gguf
 *.safetensors
-xprompts/
+prompts/
