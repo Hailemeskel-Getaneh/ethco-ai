@@ -8,9 +8,10 @@ import { useSafeAreaInsets } from 'react-native-safe-area-context';
 interface ChatInputProps {
     onSend: (message: string) => void;
     isLoading?: boolean;
+    disabled?: boolean;
 }
 
-export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
+export const ChatInput = ({ onSend, isLoading, disabled }: ChatInputProps) => {
     const [text, setText] = useState('');
     const insets = useSafeAreaInsets();
 
@@ -40,9 +41,9 @@ export const ChatInput = ({ onSend, isLoading }: ChatInputProps) => {
             </View>
 
             <TouchableOpacity
-                style={[styles.sendButton, !text.trim() && styles.disabledSend]}
+                style={[styles.sendButton, (!text.trim() || disabled || isLoading) && styles.disabledSend]}
                 onPress={handleSend}
-                disabled={!text.trim() || isLoading}
+                disabled={!text.trim() || isLoading || disabled}
             >
                 <Icon
                     name="send"
