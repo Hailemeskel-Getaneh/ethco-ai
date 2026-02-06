@@ -49,11 +49,12 @@ export default function SignupScreen() {
                 />
 
                 <Button
-                    title="Create Account"
                     onPress={handleSignup}
                     loading={loading}
                     style={styles.button}
-                />
+                >
+                    Create Account
+                </Button>
 
                 <View style={styles.footerLink}>
                     <ThemedText variant="body" color={colors.textSecondary}>Already have an account? </ThemedText>
