@@ -22,6 +22,7 @@ export function ThemedText({
     variant = 'default',
     color,
     fontSize,
+    weight,
     ...rest
 }: ThemedTextProps) {
     return (
