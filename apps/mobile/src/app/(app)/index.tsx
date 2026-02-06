@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { View, FlatList, StyleSheet, TouchableOpacity } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Screen } from '@/components/ui/Screen';
-import { ThemedText } from '@/components/ui/Typography';
+import { ThemedText } from '@/components/ui';
 import { colors } from '@/theme/colors';
 import { mockConversations, Conversation } from '@/services/mockAI';
 
