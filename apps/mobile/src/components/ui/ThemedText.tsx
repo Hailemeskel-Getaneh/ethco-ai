@@ -3,10 +3,11 @@ import { colors } from '@/theme/colors';
 import { typography } from '@/theme/typography';
 
 export type ThemedTextProps = TextProps & {
-    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
+    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'body';
     color?: string;
     fontSize?: number;
     weight?: 'regular' | 'medium' | 'semibold' | 'bold';
+    centered?: boolean;
 };
 
 /**
@@ -23,6 +24,7 @@ export function ThemedText({
     color,
     fontSize,
     weight,
+    centered,
     ...rest
 }: ThemedTextProps) {
     return (
@@ -40,6 +42,8 @@ export function ThemedText({
                 variant === 'h3' && styles.h3,
                 variant === 'h4' && styles.h4,
                 variant === 'h5' && styles.h5,
+                variant === 'body' && styles.default,
+                centered && { textAlign: 'center' },
                 color ? { color } : undefined,
                 fontSize ? { fontSize } : undefined,
                 weight ? { fontFamily: typography.fontFamily[weight], fontWeight: typography.weights[weight] as any } : undefined,
