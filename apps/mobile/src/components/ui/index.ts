@@ -1,15 +1,24 @@
 /**
  * Index file for exporting all UI components.
- * Provides a centralized import point for all UI components.
  */
 
-export { Avatar } from './Avatar';
-export { Button } from './Button';
-export { EmptyState } from './EmptyState';
-export { ErrorBoundary } from './ErrorBoundary';
-export { Icon } from './Icons';
-export { Input } from './Input';
-export { Loading } from './Loading';
-export { Screen } from './Screen';
-export { ThemedText } from './ThemedText';
-export { ThemedText as Typography } from './Typography';
+export * from './Avatar';
+export * from './Button';
+export * from './EmptyState';
+export * from './ErrorBoundary';
+export * from './Icons';
+export * from './Input';
+export * from './Loading';
+export * from './Screen';
+export * from './ThemedText';
+export * from './Typography';
+export * from './Card';
+export * from './Badge';
+export * from './Divider';
+export * from './IconButton';
+export * from './Surface';
+export * from './ListItem';
+export * from './Skeleton';
+export * from './Box';
+export * from './FadeInView';
+export * from './SearchInput';
