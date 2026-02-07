@@ -3,7 +3,7 @@ import { colors } from '@/theme/colors';
 import { typography } from '@/theme/typography';
 
 export type ThemedTextProps = TextProps & {
-    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label';
+    variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
     color?: string;
     fontSize?: number;
 };
@@ -33,6 +33,11 @@ export function ThemedText({
                 variant === 'link' && styles.link,
                 variant === 'caption' && styles.caption,
                 variant === 'label' && styles.label,
+                variant === 'h1' && styles.h1,
+                variant === 'h2' && styles.h2,
+                variant === 'h3' && styles.h3,
+                variant === 'h4' && styles.h4,
+                variant === 'h5' && styles.h5,
                 color ? { color } : undefined,
                 fontSize ? { fontSize } : undefined,
                 style,
@@ -84,5 +89,35 @@ const styles = StyleSheet.create({
         fontWeight: typography.weights.bold as any,
         fontFamily: typography.fontFamily.bold,
         color: colors.text,
+    },
+    h1: {
+        fontSize: typography.sizes.xxxl,
+        lineHeight: typography.lineHeights.xxxl,
+        fontFamily: typography.fontFamily.bold,
+        fontWeight: typography.weights.bold as any,
+    },
+    h2: {
+        fontSize: typography.sizes.xxl,
+        lineHeight: typography.lineHeights.xxl,
+        fontFamily: typography.fontFamily.bold,
+        fontWeight: typography.weights.bold as any,
+    },
+    h3: {
+        fontSize: typography.sizes.xl,
+        lineHeight: typography.lineHeights.xl,
+        fontFamily: typography.fontFamily.bold,
+        fontWeight: typography.weights.bold as any,
+    },
+    h4: {
+        fontSize: typography.sizes.lg,
+        lineHeight: typography.lineHeights.lg,
+        fontFamily: typography.fontFamily.bold,
+        fontWeight: typography.weights.bold as any,
+    },
+    h5: {
+        fontSize: typography.sizes.md,
+        lineHeight: typography.lineHeights.md,
+        fontFamily: typography.fontFamily.bold,
+        fontWeight: typography.weights.bold as any,
     },
 });
