@@ -6,6 +6,7 @@ export type ThemedTextProps = TextProps & {
     variant?: 'default' | 'title' | 'defaultSemiBold' | 'subtitle' | 'link' | 'caption' | 'label' | 'h1' | 'h2' | 'h3' | 'h4' | 'h5';
     color?: string;
     fontSize?: number;
+    weight?: 'regular' | 'medium' | 'semibold' | 'bold';
 };
 
 /**
@@ -40,6 +41,7 @@ export function ThemedText({
                 variant === 'h5' && styles.h5,
                 color ? { color } : undefined,
                 fontSize ? { fontSize } : undefined,
+                weight ? { fontFamily: typography.fontFamily[weight], fontWeight: typography.weights[weight] as any } : undefined,
                 style,
             ]}
             {...rest}
