@@ -40,4 +40,4 @@ coverage/
 *.ckpt
 *.gguf
 *.safetensors
-prompts/
+xprompts/
