@@ -38,16 +38,16 @@ export const Skeleton = ({
     }, [opacity]);
 
     return (
-        style = {
-            [
-            styles.skeleton,
-            {
-                width: width as any,
-                height: height as any,
-                opacity,
-                borderRadius: circle ? (typeof height === 'number' ? height / 2 : 999) : borderRadius.md,
-            } as any,
-            style,
+        <Animated.View
+            style={[
+                styles.skeleton,
+                {
+                    width: width as any,
+                    height: height as any,
+                    opacity,
+                    borderRadius: circle ? (typeof height === 'number' ? height / 2 : 999) : borderRadius.md,
+                } as any,
+                style,
             ]}
         />
     );
