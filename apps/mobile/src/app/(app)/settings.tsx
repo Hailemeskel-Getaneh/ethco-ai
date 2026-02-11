@@ -2,7 +2,7 @@ import React from 'react';
 import { View, StyleSheet, TouchableOpacity, ScrollView } from 'react-native';
 import { useRouter } from 'expo-router';
 import { Screen } from '@/components/ui/Screen';
-import { ThemedText } from '@/components/ui/Typography';
+import { ThemedText } from '@/components/ui';
 import { Button } from '@/components/ui/Button';
 import { colors } from '@/theme/colors';
 
@@ -48,11 +48,12 @@ export default function SettingsScreen() {
                 </View>
 
                 <Button
-                    title="Sign Out"
                     variant="outline"
                     onPress={handleLogout}
                     style={styles.logoutButton}
-                />
+                >
+                    Sign Out
+                </Button>
 
                 <View style={styles.version}>
                     <ThemedText variant="caption" color={colors.textSecondary}>Ethco AI v1.0.0 (Beta)</ThemedText>
